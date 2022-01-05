@@ -1,3 +1,4 @@
+namespace Model;
 public class ExpenseData
 {
     public Guid Id { get; set; }

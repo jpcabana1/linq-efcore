@@ -1,3 +1,4 @@
+using Expenses;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,8 +9,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 builder.Services.AddDbContext<ApplicationContext>(
-    options => options.UseInMemoryDatabase("test"));
+            options => options.UseSqlServer(builder.Configuration.GetConnectionString("dev"), connBuilder =>
+            {
+                connBuilder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+            }));
 
 var app = builder.Build();
 

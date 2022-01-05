@@ -1,3 +1,4 @@
+namespace Model;
 public class Category
 {
     public Guid Id { get; set; }
@@ -6,5 +7,4 @@ public class Category
     public string Icon { get; set; }
     public DateTime DtCreated { get; set; }
     public DateTime DtUpdate { get; set; }
-    
 }
