@@ -5,8 +5,8 @@ public class User
     public string Username { get; set; }
     public string Password { get; set; }
     public bool Active { get; set; }
-    public IEnumerable<ExpenseData> Expenses { get; set; }
-    public IEnumerable<Category> Categories { get; set; }
+    public List<ExpenseData> Expenses { get; set; }
+    public List<Category> Categories { get; set; }
 }
 
 

@@ -11,9 +11,9 @@ public class TestController : ControllerBase
 {
 
     private readonly ApplicationContext context;
-    private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger<TestController> _logger;
 
-    public TestController(ApplicationContext context, ILogger<WeatherForecastController> logger)
+    public TestController(ApplicationContext context, ILogger<TestController> logger)
     {
         this.context = context;
         _logger = logger;
@@ -23,11 +23,10 @@ public class TestController : ControllerBase
     [Route("users")]
     public async Task<IEnumerable<User>> GetUsers()
     {
-        var users = await context.Users
+        IEnumerable<User> users = await context.Users
                     .AsQueryable()
                     .OrderBy(u => u.Username)
                     .ToListAsync();
-
         return users;
     }
 }
